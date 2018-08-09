@@ -14,11 +14,16 @@ public:
 };
 
 void usage() {
-
-    auto asdf = std::make_shared<Asdf>();
-    auto optionalAsdf = Optional<Asdf>(asdf);
+    auto optionalAsdf = Optional<Asdf>(std::make_shared<Asdf>());
 
     optionalAsdf.chain([] (auto asdf) {
         std::cout << asdf->message;
+        return 3;
     });
+
+    optionalAsdf.chain([] (auto asdf) {
+        return 3;
+    });
+
+    optionalAsdf.chain(<#std::function<RetType (std::shared_ptr<Asdf>)> functor#>)
 }

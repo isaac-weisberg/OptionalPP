@@ -18,7 +18,8 @@ public:
     Optional(std::shared_ptr<T> pointer);
     std::shared_ptr<T> pointer;
 
-    void chain(std::function<void(std::shared_ptr<T>)> functor);
+    template <typename RetType>
+    RetType chain(std::function<RetType(std::shared_ptr<T>)> functor);
 };
 
 #endif /* Optional_hpp */
