@@ -9,6 +9,7 @@
 #define Optional_hpp
 
 #include <memory>
+#include <functional>
 
 template <typename T>
 struct Optional {
@@ -16,6 +17,8 @@ struct Optional {
 public:
     Optional(std::shared_ptr<T> pointer);
     std::shared_ptr<T> pointer;
+
+    void chain(std::function<void(std::shared_ptr<T>)> functor);
 };
 
 #endif /* Optional_hpp */

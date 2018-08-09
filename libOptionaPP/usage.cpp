@@ -6,16 +6,19 @@
 //
 
 #include "Optional.hpp"
+#include <iostream>
 
 class Asdf {
-
+public:
+    const std::string message = "fuck";
 };
 
 void usage() {
-    auto optionalAsdf = Optional<Asdf>(nullptr);
 
     auto asdf = std::make_shared<Asdf>();
-    optionalAsdf.pointer = asdf;
+    auto optionalAsdf = Optional<Asdf>(asdf);
 
-    auto optionalInt = Optional<int>(nullptr);
+    optionalAsdf.chain([] (auto asdf) {
+        std::cout << asdf->message;
+    });
 }
