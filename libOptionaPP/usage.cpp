@@ -13,5 +13,9 @@ class Asdf {
 
 void usage() {
     auto optionalAsdf = Optional<Asdf>(nullptr);
+
+    auto asdf = std::make_shared<Asdf>();
+    optionalAsdf.pointer = asdf;
+
     auto optionalInt = Optional<int>(nullptr);
 }
